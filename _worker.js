@@ -2,6 +2,7 @@
 // @ts-ignore
 import { connect } from 'cloudflare:sockets';
 
+let realkobeNum = 0;
 // How to generate your own UUID:
 // [Windows] Press "Win + R", input cmd and run:  Powershell -NoExit -Command "[guid]::NewGuid()"
 let userID = '90cd4a77-141a-43c9-991b-08263cfe9c10';
@@ -110,7 +111,7 @@ export default {
 					}
 					return new Response(JSON.stringify(request.cf, null, 4), { status: 200 });
 				case `/${fakeUserID}`:
-					const fakeConfig = await getVLESSConfig(userID, request.headers.get('Host'), sub, 'CF-Workers-SUB', RproxyIP, url);
+					const fakeConfig = await getVLESSConfig(userID, request.headers.get('Host')+ ++realkobeNum, sub, 'CF-Workers-SUB', RproxyIP, url);
 					return new Response(`${fakeConfig}`, { status: 200 });
 				case `/${userID}`: {
 					await sendMessage(`#获取订阅 ${FileName}`, request.headers.get('CF-Connecting-IP'), `UA: ${UA}</tg-spoiler>\n域名: ${url.hostname}\n<tg-spoiler>入口: ${url.pathname + url.search}</tg-spoiler>`);

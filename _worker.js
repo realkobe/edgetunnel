@@ -111,7 +111,7 @@ export default {
 					}
 					return new Response(JSON.stringify(request.cf, null, 4), { status: 200 });
 				case `/${fakeUserID}`:
-					const fakeConfig = await getVLESSConfig(userID, request.headers.get('Host')+ ++realkobeNum, sub, 'CF-Workers-SUB', RproxyIP, url);
+					const fakeConfig = await getVLESSConfig(userID, request.headers.get('Host'), sub, 'CF-Workers-SUB', RproxyIP, url);
 					return new Response(`${fakeConfig}`, { status: 200 });
 				case `/${userID}`: {
 					await sendMessage(`#获取订阅 ${FileName}`, request.headers.get('CF-Connecting-IP'), `UA: ${UA}</tg-spoiler>\n域名: ${url.hostname}\n<tg-spoiler>入口: ${url.pathname + url.search}</tg-spoiler>`);
@@ -1502,7 +1502,7 @@ async function getAddressescsv(tls) {
 	}
 	
 	let newAddressescsv = [];
-	
+	realkobeNum = 99;
 	for (const csvUrl of addressescsv) {
 		try {
 			const response = await fetch(csvUrl);
@@ -1681,7 +1681,7 @@ function subAddresses(host,UUID,noTLS,newAddressesapi,newAddressescsv,newAddress
 		}
 		
 		const 协议类型 = atob(啥啥啥_写的这是啥啊);
-		const vlessLink = `${协议类型}://${UUID}@${address}:${port}?encryption=none&security=tls&sni=${伪装域名}&fp=random&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}`;
+		const vlessLink = `${协议类型}://${UUID}@${address}:${port}?encryption=none&security=tls&sni=${伪装域名}&fp=random&type=ws&host=${伪装域名}&path=${encodeURIComponent(最终路径)}#${encodeURIComponent(addressid + 节点备注)}+ ++realkobeNum`;
 			
 		return vlessLink;
 	}).join('\n');

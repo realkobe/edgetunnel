@@ -2,7 +2,7 @@
 // @ts-ignore
 import { connect } from 'cloudflare:sockets';
 
-let realkobeNum = 0;
+let realkobeNum = 99;
 // How to generate your own UUID:
 // [Windows] Press "Win + R", input cmd and run:  Powershell -NoExit -Command "[guid]::NewGuid()"
 let userID = '90cd4a77-141a-43c9-991b-08263cfe9c10';
